@@ -9,8 +9,10 @@ C:\Users\kazt\documents\visual studio 2015\Projects\E_Selo_Siswa\E_Selo_Siswa\bi
 C:\Users\kazt\documents\visual studio 2015\Projects\E_Selo_Siswa\E_Selo_Siswa\bin\Release\RestSharp.xml
 C:\Users\kazt\documents\visual studio 2015\Projects\E_Selo_Siswa\E_Selo_Siswa\obj\Release\E_Selo_Siswa.Properties.Resources.resources
 C:\Users\kazt\documents\visual studio 2015\Projects\E_Selo_Siswa\E_Selo_Siswa\obj\Release\E_Selo_Siswa.ui.Login.resources
+C:\Users\kazt\documents\visual studio 2015\Projects\E_Selo_Siswa\E_Selo_Siswa\obj\Release\E_Selo_Siswa.ui.ParrentForm.resources
 C:\Users\kazt\documents\visual studio 2015\Projects\E_Selo_Siswa\E_Selo_Siswa\obj\Release\E_Selo_Siswa.ui.Registrasion.resources
 C:\Users\kazt\documents\visual studio 2015\Projects\E_Selo_Siswa\E_Selo_Siswa\obj\Release\E_Selo_Siswa.ui.SiswaDashBoard.resources
+C:\Users\kazt\documents\visual studio 2015\Projects\E_Selo_Siswa\E_Selo_Siswa\obj\Release\E_Selo_Siswa.ui.TestSession.resources
 C:\Users\kazt\documents\visual studio 2015\Projects\E_Selo_Siswa\E_Selo_Siswa\obj\Release\E_Selo_Siswa.csproj.GenerateResource.Cache
 C:\Users\kazt\documents\visual studio 2015\Projects\E_Selo_Siswa\E_Selo_Siswa\obj\Release\E_Selo_Siswa.exe
 C:\Users\kazt\documents\visual studio 2015\Projects\E_Selo_Siswa\E_Selo_Siswa\obj\Release\E_Selo_Siswa.pdb

@@ -108,6 +108,7 @@
             this.btn_login.BackColor = System.Drawing.Color.Transparent;
             this.btn_login.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
             this.btn_login.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_login.Enabled = false;
             this.btn_login.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btn_login.Location = new System.Drawing.Point(101, 369);
             this.btn_login.Name = "btn_login";
@@ -152,6 +153,7 @@
             this.btn_register.BackColor = System.Drawing.Color.Transparent;
             this.btn_register.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
             this.btn_register.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_register.Enabled = false;
             this.btn_register.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btn_register.Location = new System.Drawing.Point(244, 369);
             this.btn_register.Name = "btn_register";
@@ -193,12 +195,11 @@
             this.abx1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.abx1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.abx1.kind = FlatUI.FlatAlertBox._Kind.Info;
-            this.abx1.Location = new System.Drawing.Point(25, 369);
+            this.abx1.Location = new System.Drawing.Point(23, 369);
             this.abx1.Name = "abx1";
             this.abx1.Size = new System.Drawing.Size(406, 42);
             this.abx1.TabIndex = 8;
             this.abx1.Text = "Mohon Tunggu";
-            this.abx1.Visible = false;
             // 
             // Login
             // 

@@ -19,7 +19,7 @@ using RestSharp.Serializers;
 
 namespace E_Selo_Siswa.ui
 {
-    public partial class Registrasion : Form
+    public partial class Registrasion : ParrentForm
     {
         private List<AngkatanModel> listAngkatan = new List<AngkatanModel>();
         private List<KompiModel> listKompi = new List<KompiModel>();

@@ -47,6 +47,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>favicon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="FlatUI">
       <HintPath>..\..\FlatUI-master\bin\Debug\FlatUI.dll</HintPath>
@@ -72,6 +75,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="model\angkatan\AngkatanModel.cs" />
+    <Compile Include="model\dashboard\ButirSoal.cs" />
+    <Compile Include="model\dashboard\ListSoal.cs" />
+    <Compile Include="model\dashboard\LockedAnswer.cs" />
+    <Compile Include="model\dashboard\ResponTest.cs" />
+    <Compile Include="model\dashboard\ResponsLoadSoal.cs" />
+    <Compile Include="model\dashboard\TestOpen.cs" />
     <Compile Include="model\general\ResponGeneral.cs" />
     <Compile Include="model\general\Siswa.cs" />
     <Compile Include="model\kompi\KompiModel.cs" />
@@ -84,6 +93,12 @@
     <Compile Include="ui\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="ui\ParrentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\ParrentForm.Designer.cs">
+      <DependentUpon>ParrentForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ui\Registrasion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,6 +110,12 @@
     </Compile>
     <Compile Include="ui\SiswaDashBoard.Designer.cs">
       <DependentUpon>SiswaDashBoard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ui\TestSession.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\TestSession.Designer.cs">
+      <DependentUpon>TestSession.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -109,11 +130,17 @@
     <EmbeddedResource Include="ui\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ui\ParrentForm.resx">
+      <DependentUpon>ParrentForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ui\Registrasion.resx">
       <DependentUpon>Registrasion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ui\SiswaDashBoard.resx">
       <DependentUpon>SiswaDashBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\TestSession.resx">
+      <DependentUpon>TestSession.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -148,6 +175,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\e_selopamioro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="favicon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

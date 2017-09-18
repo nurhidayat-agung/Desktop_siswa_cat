@@ -14,19 +14,18 @@ using E_Selo_Siswa.ui;
 using E_Selo_Siswa.model.angkatan;
 using E_Selo_Siswa.model.kompi;
 using E_Selo_Siswa.model.pleton;
-using E_Selo_Siswa.model.general;
 using System.Diagnostics;
 
 namespace E_Selo_Siswa.ui
 {
-    public partial class Login : Form
+    public partial class Login : ParrentForm
     {
         private List<AngkatanModel> listAngkatan = new List<AngkatanModel>();
         private List<KompiModel> listKompi = new List<KompiModel>();
         private List<PletonModel> listPleton = new List<PletonModel>();
-        private IRestResponse<List<AngkatanModel>> resAngkatan;
-        private IRestResponse<List<KompiModel>> resKompi;
-        private IRestResponse<List<PletonModel>> resPleton;
+        //private IRestResponse<List<AngkatanModel>> resAngkatan;
+        //private IRestResponse<List<KompiModel>> resKompi;
+        //private IRestResponse<List<PletonModel>> resPleton;
         private IRestResponse<ResponGeneral> resLogin;
         private bool isPleton = false;
         private bool isKompi = false;
@@ -40,9 +39,6 @@ namespace E_Selo_Siswa.ui
 
         private void loadData()
         {
-            abx1.Visible = true;
-            btn_login.Enabled = false;
-            btn_register.Enabled = false;
             var client = new RestClient("http://e-selo.id/");
             IRestRequest reqAngkatan = new RestRequest("/php/angkatan/loadAngkatan.php", Method.GET);
             //resAngkatan = client.Execute<List<AngkatanModel>>(reqAngkatan);
@@ -64,10 +60,35 @@ namespace E_Selo_Siswa.ui
                 listPleton = JsonConvert.DeserializeObject<List<PletonModel>>(resPleton.Content);
                 Debug.WriteLine("result pleton : " + listPleton.Count);
                 isPleton = true;
-            });            
-            abx1.Visible = false;
-            btn_login.Enabled = true;
-            btn_register.Enabled = true;
+                if (btn_login.InvokeRequired)
+                {
+                    btn_login.Invoke(
+                       (Action)delegate
+                       {
+                           btn_login.Enabled = true;
+                       }
+                    );
+                }
+                if (btn_register.InvokeRequired)
+                {
+                    btn_register.Invoke(
+                       (Action)delegate
+                       {
+                           btn_register.Enabled = true;
+                       }
+                    );
+                }
+                if (abx1.InvokeRequired)
+                {
+                    abx1.Invoke(
+                       (Action)delegate
+                       {
+                           abx1.Visible = false;
+                       }
+                    );
+                }
+            });
+                                               
         }
 
         private void tb_nis_Enter(object sender, EventArgs e)
@@ -119,7 +140,6 @@ namespace E_Selo_Siswa.ui
                 if (resp.status == 1)
                 {
                     Siswa siswa = resp.data;
-                    MessageBox.Show(siswa.namaSiswa);
                     btn_login.Enabled = true;
                     abx1.Visible = false;
                     SiswaDashBoard dasboard = new SiswaDashBoard(siswa, listAngkatan, listKompi, listPleton);

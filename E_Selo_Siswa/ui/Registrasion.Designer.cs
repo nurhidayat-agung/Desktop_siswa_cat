@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.skinLogin = new FlatUI.FormSkin();
+            this.abx5 = new FlatUI.FlatAlertBox();
             this.btnCek = new FlatUI.FlatButton();
             this.abx4 = new FlatUI.FlatAlertBox();
             this.abx3 = new FlatUI.FlatAlertBox();
@@ -49,7 +50,6 @@
             this.flatLabel1 = new FlatUI.FlatLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_close = new FlatUI.FlatButton();
-            this.abx5 = new FlatUI.FlatAlertBox();
             this.skinLogin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -90,6 +90,19 @@
             this.skinLogin.Size = new System.Drawing.Size(744, 542);
             this.skinLogin.TabIndex = 0;
             this.skinLogin.Text = "Registrasion";
+            // 
+            // abx5
+            // 
+            this.abx5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.abx5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.abx5.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.abx5.kind = FlatUI.FlatAlertBox._Kind.Error;
+            this.abx5.Location = new System.Drawing.Point(99, 70);
+            this.abx5.Name = "abx5";
+            this.abx5.Size = new System.Drawing.Size(576, 42);
+            this.abx5.TabIndex = 21;
+            this.abx5.Text = "Mohon NIS diisi terlebih dahulu";
+            this.abx5.Visible = false;
             // 
             // btnCek
             // 
@@ -360,19 +373,6 @@
             this.btn_close.Text = "Tutup";
             this.btn_close.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
-            // 
-            // abx5
-            // 
-            this.abx5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
-            this.abx5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.abx5.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.abx5.kind = FlatUI.FlatAlertBox._Kind.Error;
-            this.abx5.Location = new System.Drawing.Point(99, 70);
-            this.abx5.Name = "abx5";
-            this.abx5.Size = new System.Drawing.Size(576, 42);
-            this.abx5.TabIndex = 21;
-            this.abx5.Text = "Mohon NIS diisi terlebih dahulu";
-            this.abx5.Visible = false;
             // 
             // Registrasion
             // 
