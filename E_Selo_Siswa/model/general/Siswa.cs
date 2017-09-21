@@ -8,7 +8,7 @@ namespace E_Selo_Siswa.model.general
 {
     public class Siswa
     {
-        public Int64 nis { get; set; }
+        public long nis { get; set; }
         public string namaSiswa { get; set; }
         public string password { get; set; }
         public int idAngkatan { get; set; }

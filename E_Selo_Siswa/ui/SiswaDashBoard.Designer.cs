@@ -42,6 +42,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.formSkin1 = new FlatUI.FormSkin();
+            this.abx4 = new FlatUI.FlatAlertBox();
+            this.btnRefresh = new FlatUI.FlatButton();
+            this.abx3 = new FlatUI.FlatAlertBox();
+            this.abx2 = new FlatUI.FlatAlertBox();
             this.tbxNIS = new FlatUI.FlatTextBox();
             this.abx1 = new FlatUI.FlatAlertBox();
             this.btnUpdate = new FlatUI.FlatButton();
@@ -70,8 +74,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.flatMini1 = new FlatUI.FlatMini();
             this.flatClose1 = new FlatUI.FlatClose();
-            this.abx2 = new FlatUI.FlatAlertBox();
-            this.abx3 = new FlatUI.FlatAlertBox();
             this.formSkin1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRespon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTest)).BeginInit();
@@ -83,6 +85,8 @@
             this.formSkin1.BackColor = System.Drawing.Color.White;
             this.formSkin1.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
             this.formSkin1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(60)))));
+            this.formSkin1.Controls.Add(this.abx4);
+            this.formSkin1.Controls.Add(this.btnRefresh);
             this.formSkin1.Controls.Add(this.abx3);
             this.formSkin1.Controls.Add(this.abx2);
             this.formSkin1.Controls.Add(this.tbxNIS);
@@ -115,6 +119,60 @@
             this.formSkin1.TabIndex = 0;
             this.formSkin1.Text = "Siswa Dasboard";
             // 
+            // abx4
+            // 
+            this.abx4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.abx4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.abx4.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.abx4.kind = FlatUI.FlatAlertBox._Kind.Info;
+            this.abx4.Location = new System.Drawing.Point(12, 577);
+            this.abx4.Name = "abx4";
+            this.abx4.Size = new System.Drawing.Size(323, 42);
+            this.abx4.TabIndex = 40;
+            this.abx4.Text = "Mohon Tunggu Update Data Ke server";
+            this.abx4.Visible = false;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.BackColor = System.Drawing.Color.Transparent;
+            this.btnRefresh.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
+            this.btnRefresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRefresh.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnRefresh.Location = new System.Drawing.Point(441, 98);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Rounded = false;
+            this.btnRefresh.Size = new System.Drawing.Size(273, 32);
+            this.btnRefresh.TabIndex = 39;
+            this.btnRefresh.Text = "Refresh List Test & Respon";
+            this.btnRefresh.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // abx3
+            // 
+            this.abx3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.abx3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.abx3.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.abx3.kind = FlatUI.FlatAlertBox._Kind.Info;
+            this.abx3.Location = new System.Drawing.Point(468, 474);
+            this.abx3.Name = "abx3";
+            this.abx3.Size = new System.Drawing.Size(576, 42);
+            this.abx3.TabIndex = 38;
+            this.abx3.Text = "Mohon Tunggu Mengambil data Hasil Ujian siswa";
+            this.abx3.Visible = false;
+            // 
+            // abx2
+            // 
+            this.abx2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.abx2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.abx2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.abx2.kind = FlatUI.FlatAlertBox._Kind.Info;
+            this.abx2.Location = new System.Drawing.Point(468, 235);
+            this.abx2.Name = "abx2";
+            this.abx2.Size = new System.Drawing.Size(576, 42);
+            this.abx2.TabIndex = 37;
+            this.abx2.Text = "Mohon Tunggu Mengambil data Test dari server";
+            this.abx2.Visible = false;
+            // 
             // tbxNIS
             // 
             this.tbxNIS.BackColor = System.Drawing.Color.Transparent;
@@ -137,7 +195,7 @@
             this.abx1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.abx1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.abx1.kind = FlatUI.FlatAlertBox._Kind.Info;
-            this.abx1.Location = new System.Drawing.Point(468, 231);
+            this.abx1.Location = new System.Drawing.Point(468, 235);
             this.abx1.Name = "abx1";
             this.abx1.Size = new System.Drawing.Size(576, 42);
             this.abx1.TabIndex = 35;
@@ -494,30 +552,6 @@
             this.flatClose1.Text = "flatClose1";
             this.flatClose1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             // 
-            // abx2
-            // 
-            this.abx2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
-            this.abx2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.abx2.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.abx2.kind = FlatUI.FlatAlertBox._Kind.Info;
-            this.abx2.Location = new System.Drawing.Point(468, 231);
-            this.abx2.Name = "abx2";
-            this.abx2.Size = new System.Drawing.Size(576, 42);
-            this.abx2.TabIndex = 37;
-            this.abx2.Text = "Mohon Tunggu Mengambil data Test dari server";
-            // 
-            // abx3
-            // 
-            this.abx3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
-            this.abx3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.abx3.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.abx3.kind = FlatUI.FlatAlertBox._Kind.Info;
-            this.abx3.Location = new System.Drawing.Point(468, 474);
-            this.abx3.Name = "abx3";
-            this.abx3.Size = new System.Drawing.Size(576, 42);
-            this.abx3.TabIndex = 38;
-            this.abx3.Text = "Mohon Tunggu Mengambil data Hasil Ujian siswa";
-            // 
             // SiswaDashBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -571,5 +605,7 @@
         private FlatUI.FlatTextBox tbxNIS;
         private FlatUI.FlatAlertBox abx2;
         private FlatUI.FlatAlertBox abx3;
+        private FlatUI.FlatButton btnRefresh;
+        private FlatUI.FlatAlertBox abx4;
     }
 }

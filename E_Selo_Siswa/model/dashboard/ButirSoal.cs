@@ -8,7 +8,7 @@ namespace E_Selo_Siswa.model.dashboard
 {
     public class ButirSoal
     {
-        public int idSoal { get; set; }
+        public long idSoal { get; set; }
 
         public int idBankSoal { get; set; }
 

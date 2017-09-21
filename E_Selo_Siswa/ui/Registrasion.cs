@@ -81,7 +81,7 @@ namespace E_Selo_Siswa.ui
                     IRestRequest reqReg = new RestRequest("/php/desktopSiswa/pushSiswa.php", Method.POST);
                     reqReg.AddJsonBody(new
                     {
-                        nis = Convert.ToInt16(tbxNis.Text),
+                        nis = tbxNis.Text,
                         namaSiswa = tbx_nama.Text,
                         password = tbx_pass.Text,
                         idAngkatan = listAngkatan[cbxAngkatan.SelectedIndex].idAngkatan,
@@ -137,7 +137,7 @@ namespace E_Selo_Siswa.ui
                 IRestRequest reqNis = new RestRequest("/php/desktopSiswa/cekNis.php", Method.POST);
                 reqNis.AddJsonBody(new
                 {
-                    nis = Convert.ToInt16(tbxNis.Text)
+                    nis = tbxNis.Text
                 });
                 resNis = client.Execute<ResponGeneral>(reqNis);
                 ResponGeneral resp = JsonConvert.DeserializeObject<ResponGeneral>(resNis.Content);

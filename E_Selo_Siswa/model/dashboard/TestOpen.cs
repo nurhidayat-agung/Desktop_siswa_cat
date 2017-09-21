@@ -8,7 +8,7 @@ namespace E_Selo_Siswa.model.dashboard
 {
     public class TestOpen
     {
-        public int idTest { get; set; }
+        public long idTest { get; set; }
         public int idBankSoal { get; set; }
         public string namaTest { get; set; }
         public string jenisTest { get; set; }

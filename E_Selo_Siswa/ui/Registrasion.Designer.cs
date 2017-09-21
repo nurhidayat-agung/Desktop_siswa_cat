@@ -97,7 +97,7 @@
             this.abx5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.abx5.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.abx5.kind = FlatUI.FlatAlertBox._Kind.Error;
-            this.abx5.Location = new System.Drawing.Point(99, 70);
+            this.abx5.Location = new System.Drawing.Point(33, 127);
             this.abx5.Name = "abx5";
             this.abx5.Size = new System.Drawing.Size(576, 42);
             this.abx5.TabIndex = 21;

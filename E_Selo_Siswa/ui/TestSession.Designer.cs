@@ -30,6 +30,7 @@
         {
             this.skinTest = new FlatUI.FormSkin();
             this.pnlSoal = new System.Windows.Forms.Panel();
+            this.abx1 = new FlatUI.FlatAlertBox();
             this.pnlEssay = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.rtbEssay3 = new System.Windows.Forms.RichTextBox();
@@ -62,11 +63,13 @@
             this.lblNamaTest = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_close = new FlatUI.FlatButton();
-            this.abx1 = new FlatUI.FlatAlertBox();
+            this.pnlRunTest = new System.Windows.Forms.Panel();
+            this.abx2 = new FlatUI.FlatAlertBox();
             this.skinTest.SuspendLayout();
             this.pnlSoal.SuspendLayout();
             this.pnlEssay.SuspendLayout();
             this.pnlPilGan.SuspendLayout();
+            this.pnlRunTest.SuspendLayout();
             this.SuspendLayout();
             // 
             // skinTest
@@ -101,31 +104,38 @@
             // 
             // pnlSoal
             // 
-            this.pnlSoal.Controls.Add(this.abx1);
-            this.pnlSoal.Controls.Add(this.pnlEssay);
-            this.pnlSoal.Controls.Add(this.btnCheck);
+            this.pnlSoal.Controls.Add(this.pnlRunTest);
             this.pnlSoal.Controls.Add(this.btnFinish);
-            this.pnlSoal.Controls.Add(this.btnBack);
-            this.pnlSoal.Controls.Add(this.btnNext);
-            this.pnlSoal.Controls.Add(this.pnlPilGan);
-            this.pnlSoal.Controls.Add(this.rtbIsiSoal);
-            this.pnlSoal.Controls.Add(this.lblNoSoal);
             this.pnlSoal.Location = new System.Drawing.Point(30, 109);
             this.pnlSoal.Name = "pnlSoal";
             this.pnlSoal.Size = new System.Drawing.Size(951, 532);
             this.pnlSoal.TabIndex = 21;
             this.pnlSoal.Visible = false;
             // 
+            // abx1
+            // 
+            this.abx1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.abx1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.abx1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.abx1.kind = FlatUI.FlatAlertBox._Kind.Success;
+            this.abx1.Location = new System.Drawing.Point(366, 403);
+            this.abx1.Name = "abx1";
+            this.abx1.Size = new System.Drawing.Size(209, 42);
+            this.abx1.TabIndex = 23;
+            this.abx1.Text = "Jawaban Tersimpan";
+            this.abx1.Visible = false;
+            // 
             // pnlEssay
             // 
             this.pnlEssay.BackColor = System.Drawing.Color.Transparent;
+            this.pnlEssay.Controls.Add(this.abx2);
             this.pnlEssay.Controls.Add(this.label7);
             this.pnlEssay.Controls.Add(this.rtbEssay3);
             this.pnlEssay.Controls.Add(this.label5);
             this.pnlEssay.Controls.Add(this.rtbEssay2);
             this.pnlEssay.Controls.Add(this.label1);
             this.pnlEssay.Controls.Add(this.rtbEssay1);
-            this.pnlEssay.Location = new System.Drawing.Point(81, 138);
+            this.pnlEssay.Location = new System.Drawing.Point(68, 117);
             this.pnlEssay.Name = "pnlEssay";
             this.pnlEssay.Size = new System.Drawing.Size(818, 275);
             this.pnlEssay.TabIndex = 22;
@@ -190,7 +200,7 @@
             this.btnCheck.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
             this.btnCheck.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCheck.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btnCheck.Location = new System.Drawing.Point(70, 431);
+            this.btnCheck.Location = new System.Drawing.Point(57, 410);
             this.btnCheck.Name = "btnCheck";
             this.btnCheck.Rounded = false;
             this.btnCheck.Size = new System.Drawing.Size(155, 32);
@@ -205,7 +215,7 @@
             this.btnFinish.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
             this.btnFinish.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFinish.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btnFinish.Location = new System.Drawing.Point(23, 471);
+            this.btnFinish.Location = new System.Drawing.Point(23, 478);
             this.btnFinish.Name = "btnFinish";
             this.btnFinish.Rounded = false;
             this.btnFinish.Size = new System.Drawing.Size(187, 42);
@@ -220,7 +230,7 @@
             this.btnBack.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
             this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBack.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btnBack.Location = new System.Drawing.Point(688, 431);
+            this.btnBack.Location = new System.Drawing.Point(675, 410);
             this.btnBack.Name = "btnBack";
             this.btnBack.Rounded = false;
             this.btnBack.Size = new System.Drawing.Size(106, 32);
@@ -235,7 +245,7 @@
             this.btnNext.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
             this.btnNext.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNext.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btnNext.Location = new System.Drawing.Point(819, 431);
+            this.btnNext.Location = new System.Drawing.Point(806, 410);
             this.btnNext.Name = "btnNext";
             this.btnNext.Rounded = false;
             this.btnNext.Size = new System.Drawing.Size(106, 32);
@@ -253,7 +263,7 @@
             this.pnlPilGan.Controls.Add(this.rbC);
             this.pnlPilGan.Controls.Add(this.rbB);
             this.pnlPilGan.Controls.Add(this.rbA);
-            this.pnlPilGan.Location = new System.Drawing.Point(81, 138);
+            this.pnlPilGan.Location = new System.Drawing.Point(68, 117);
             this.pnlPilGan.Name = "pnlPilGan";
             this.pnlPilGan.Size = new System.Drawing.Size(818, 275);
             this.pnlPilGan.TabIndex = 15;
@@ -318,7 +328,7 @@
             this.rtbIsiSoal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.rtbIsiSoal.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rtbIsiSoal.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rtbIsiSoal.Location = new System.Drawing.Point(44, 27);
+            this.rtbIsiSoal.Location = new System.Drawing.Point(31, 6);
             this.rtbIsiSoal.Name = "rtbIsiSoal";
             this.rtbIsiSoal.Size = new System.Drawing.Size(881, 96);
             this.rtbIsiSoal.TabIndex = 2;
@@ -328,7 +338,7 @@
             // 
             this.lblNoSoal.AutoSize = true;
             this.lblNoSoal.BackColor = System.Drawing.Color.Transparent;
-            this.lblNoSoal.Location = new System.Drawing.Point(19, 27);
+            this.lblNoSoal.Location = new System.Drawing.Point(6, 6);
             this.lblNoSoal.Name = "lblNoSoal";
             this.lblNoSoal.Size = new System.Drawing.Size(19, 21);
             this.lblNoSoal.TabIndex = 1;
@@ -476,18 +486,33 @@
             this.btn_close.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
-            // abx1
+            // pnlRunTest
             // 
-            this.abx1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
-            this.abx1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.abx1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.abx1.kind = FlatUI.FlatAlertBox._Kind.Success;
-            this.abx1.Location = new System.Drawing.Point(379, 424);
-            this.abx1.Name = "abx1";
-            this.abx1.Size = new System.Drawing.Size(209, 42);
-            this.abx1.TabIndex = 23;
-            this.abx1.Text = "Jawaban Tersimpan";
-            this.abx1.Visible = false;
+            this.pnlRunTest.Controls.Add(this.abx1);
+            this.pnlRunTest.Controls.Add(this.pnlEssay);
+            this.pnlRunTest.Controls.Add(this.btnCheck);
+            this.pnlRunTest.Controls.Add(this.btnBack);
+            this.pnlRunTest.Controls.Add(this.btnNext);
+            this.pnlRunTest.Controls.Add(this.pnlPilGan);
+            this.pnlRunTest.Controls.Add(this.rtbIsiSoal);
+            this.pnlRunTest.Controls.Add(this.lblNoSoal);
+            this.pnlRunTest.Location = new System.Drawing.Point(14, 21);
+            this.pnlRunTest.Name = "pnlRunTest";
+            this.pnlRunTest.Size = new System.Drawing.Size(926, 451);
+            this.pnlRunTest.TabIndex = 24;
+            // 
+            // abx2
+            // 
+            this.abx2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.abx2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.abx2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.abx2.kind = FlatUI.FlatAlertBox._Kind.Info;
+            this.abx2.Location = new System.Drawing.Point(113, 96);
+            this.abx2.Name = "abx2";
+            this.abx2.Size = new System.Drawing.Size(576, 42);
+            this.abx2.TabIndex = 15;
+            this.abx2.Text = "silahkan tekan tombol \"selesai\" untuk submit";
+            this.abx2.Visible = false;
             // 
             // TestSession
             // 
@@ -503,11 +528,12 @@
             this.skinTest.ResumeLayout(false);
             this.skinTest.PerformLayout();
             this.pnlSoal.ResumeLayout(false);
-            this.pnlSoal.PerformLayout();
             this.pnlEssay.ResumeLayout(false);
             this.pnlEssay.PerformLayout();
             this.pnlPilGan.ResumeLayout(false);
             this.pnlPilGan.PerformLayout();
+            this.pnlRunTest.ResumeLayout(false);
+            this.pnlRunTest.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -549,5 +575,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox rtbEssay1;
         private FlatUI.FlatAlertBox abx1;
+        private System.Windows.Forms.Panel pnlRunTest;
+        private FlatUI.FlatAlertBox abx2;
     }
 }

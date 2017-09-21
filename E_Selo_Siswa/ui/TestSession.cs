@@ -16,6 +16,7 @@ using System.Diagnostics;
 using System.Text.RegularExpressions;
 using RestSharp;
 using Newtonsoft.Json;
+using System.Timers;
 
 namespace E_Selo_Siswa.ui
 {
@@ -32,6 +33,8 @@ namespace E_Selo_Siswa.ui
         private LockedAnswer[] answers;
         private bool[] isAnswer;
         private IRestResponse<ResponGeneral> resReg;
+        System.Timers.Timer t;
+        double minute, sec;
 
         public TestSession()
         {
@@ -51,6 +54,18 @@ namespace E_Selo_Siswa.ui
             isAnswer = new bool[listSoal.Count];
             InitializeComponent();
             loadTestInformation(testOpen);
+            loadTimerTest(testOpen);            
+        }
+
+        private void loadTimerTest(TestOpen testOpen)
+        {
+            t = new System.Timers.Timer();
+            t.Interval = 1000;
+            t.Elapsed += onTimeEvent;
+            sec = 0;
+            minute = testOpen.waktuTest;
+            lblSec.Text = sec.ToString();
+            lblMinute.Text = minute.ToString();
         }
 
         private void loadTestInformation(TestOpen testOpen)
@@ -65,11 +80,13 @@ namespace E_Selo_Siswa.ui
         {
             SiswaDashBoard dasboard = new SiswaDashBoard(siswa,listAngkatan,listKompi,listPleton);
             dasboard.Show();
+            t.Stop();
             this.Close();
         }
 
         private void btnMulaiTest_Click(object sender, EventArgs e)
         {
+            startTimer();
             btnMulaiTest.Visible = false;
             pnlSoal.Visible = true;
             lblNoSoal.Text = noTest + 1 + "";
@@ -81,6 +98,73 @@ namespace E_Selo_Siswa.ui
             }
             else {
                 btnNext.Enabled = false;
+            }
+        }
+
+        private void startTimer()
+        {
+            t.Start();
+        }
+
+        private void onTimeEvent(object sender, ElapsedEventArgs e)
+        {
+            if (sec <= 0)
+            {
+                if (minute > 0)
+                {
+                    minute--;
+                    sec = 59;
+                    refreshTimer();
+                }
+                else {
+                    t.Stop();                
+                    if (pnlRunTest.InvokeRequired)
+                    {
+                        pnlRunTest.Invoke(
+                           (Action)delegate
+                           {
+                               pnlRunTest.Visible = false;
+                           }
+                        );
+                    }
+                    if (abx2.InvokeRequired)
+                    {
+                        abx2.Invoke(
+                           (Action)delegate
+                           {
+                               abx2.Visible = true;
+                           }
+                        );
+                    }
+                    MessageBox.Show("waktu habis!!! \nsilahkan tekan tombol selesai untuk submit hasil ujian anda");
+                }
+            }
+            else {
+                sec--;
+                refreshTimer();
+            }
+                       
+        }
+
+        private void refreshTimer()
+        {
+            if (lblSec.InvokeRequired)
+            {
+                lblSec.Invoke(
+                   (Action)delegate
+                   {
+                       lblSec.Text = sec.ToString();
+                   }
+                );
+            }
+            if (lblMinute.InvokeRequired)
+            {
+                lblSec.Invoke(
+                   (Action)delegate
+                   {
+                       lblMinute.Text = minute.ToString();
+                   }
+                );
             }
         }
 
@@ -417,7 +501,7 @@ namespace E_Selo_Siswa.ui
         private void btnFinish_Click(object sender, EventArgs e)
         {
             Debug.WriteLine("score total : " + scores.Sum());
-            DialogResult result = MessageBox.Show("Anda yakin semua jawaban sudah terisi degan benar ?", "Confirmation", MessageBoxButtons.YesNo);
+            DialogResult result = MessageBox.Show("Submit Hasil Test ?", "Confirmation", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes) {
                 submitRespon();
                 
@@ -451,7 +535,15 @@ namespace E_Selo_Siswa.ui
                 MessageBox.Show("input respon berhasil");
                 SiswaDashBoard dasboard = new SiswaDashBoard(siswa, listAngkatan, listKompi, listPleton);
                 dasboard.Show();
-                this.Close();
+                if (this.InvokeRequired)
+                {
+                    this.Invoke(
+                       (Action)delegate
+                       {
+                           this.Close();
+                       }
+                    );
+                }              
             }
             else {
                 MessageBox.Show("input respon berhasil");

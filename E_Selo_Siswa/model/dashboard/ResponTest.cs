@@ -8,7 +8,7 @@ namespace E_Selo_Siswa.model.dashboard
 {
     public class ResponTest
     {
-        public int idResponTest { get; set; }
+        public long idResponTest { get; set; }
 
         public long nis { get; set; }
 

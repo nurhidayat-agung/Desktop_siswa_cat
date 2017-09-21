@@ -59,18 +59,24 @@ namespace E_Selo_Siswa.ui
             });
             client.ExecuteAsync(reqTest, resTest => {
                 listTest = JsonConvert.DeserializeObject<List<TestOpen>>(resTest.Content);
-                Debug.WriteLine("result Test : " + listTest.Count);                
-                if (dgvTest.InvokeRequired)
+                Debug.WriteLine("result Test : " + listTest.Count);
+                if (listTest.Count > 0)
                 {
-                    dgvTest.Invoke(
-                       (Action)delegate
-                       {
-                           foreach (TestOpen test in listTest)
+                    if (dgvTest.InvokeRequired)
+                    {
+                        dgvTest.Invoke(
+                           (Action)delegate
                            {
-                               dgvTest.Rows.Add(test.idTest, test.namaTest, test.jenisTest, test.waktuTest);
+                               foreach (TestOpen test in listTest)
+                               {
+                                   dgvTest.Rows.Add(test.idTest, test.namaTest, test.jenisTest, test.waktuTest);
+                               }
                            }
-                       }
-                    );
+                        );
+                    }
+                }
+                else {
+                    MessageBox.Show("tidak ditemukan data test dalam data base");
                 }
                 if (abx2.InvokeRequired)
                 {
@@ -90,17 +96,23 @@ namespace E_Selo_Siswa.ui
             client.ExecuteAsync(reqRespon, resRespon => {
                 listRespon = JsonConvert.DeserializeObject<List<ResponTest>>(resRespon.Content);
                 Debug.WriteLine("result respon : " + listTest.Count);
-                if (dgvRespon.InvokeRequired)
+                if (listRespon.Count > 0)
                 {
-                    dgvRespon.Invoke(
-                       (Action)delegate
-                       {
-                           foreach (ResponTest respon in listRespon)
+                    if (dgvRespon.InvokeRequired)
+                    {
+                        dgvRespon.Invoke(
+                           (Action)delegate
                            {
-                               dgvRespon.Rows.Add(respon.idResponTest,respon.namaTest,respon.jenisTest,respon.nilaiResponTest);
+                               foreach (ResponTest respon in listRespon)
+                               {
+                                   dgvRespon.Rows.Add(respon.idResponTest, respon.namaTest, respon.jenisTest, respon.nilaiResponTest);
+                               }
                            }
-                       }
-                    );
+                        );
+                    }
+                }
+                else {
+                    MessageBox.Show("Tidak ditemukan respon dalam data base");
                 }
                 if (abx3.InvokeRequired)
                 {
@@ -111,7 +123,6 @@ namespace E_Selo_Siswa.ui
                        }
                     );
                 }
-
             });
         }
 
@@ -185,24 +196,88 @@ namespace E_Selo_Siswa.ui
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            var client = new RestClient("http://e-selo.id/");
-            IRestRequest reqUpdate = new RestRequest("/php/desktopSiswa/editSiswa.php", Method.POST);
-            reqUpdate.AddJsonBody(new {
-                nis = tbxNIS.Text,
-                namaSiswa = tbx_nama.Text,
-                password = tbx_pass.Text,
-                idAngkatan = listAngkatan[cbxAngkatan.SelectedIndex].idAngkatan,
-                idPleton = listPleton[cbxPleton.SelectedIndex].idPleton,
-                idKompi = listKompi[cbxKompi.SelectedIndex].idKompi
-            });
-            client.ExecuteAsync(reqUpdate, resUpdateNis => {
-                ResponGeneral respon = JsonConvert.DeserializeObject<ResponGeneral>(resUpdateNis.Content);
-                if (respon.status == 1) {
-                    MessageBox.Show("update siswa sukses");
-                } else if (respon.status == 0) {
-                    MessageBox.Show("update siswa gagal");
-                }
-            });
+            DialogResult result = MessageBox.Show("Update Profile siswa ?", "Confirmation", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                btnUpdate.Enabled = false;
+                abx4.Visible = true;
+                var client = new RestClient("http://e-selo.id/");
+                IRestRequest reqUpdate = new RestRequest("/php/desktopSiswa/editSiswa.php", Method.POST);
+                reqUpdate.AddJsonBody(new
+                {
+                    nis = tbxNIS.Text,
+                    namaSiswa = tbx_nama.Text,
+                    password = tbx_pass.Text,
+                    idAngkatan = listAngkatan[cbxAngkatan.SelectedIndex].idAngkatan,
+                    idPleton = listPleton[cbxPleton.SelectedIndex].idPleton,
+                    idKompi = listKompi[cbxKompi.SelectedIndex].idKompi
+                });
+                client.ExecuteAsync(reqUpdate, resUpdateNis => {
+                    ResponGeneral respon = JsonConvert.DeserializeObject<ResponGeneral>(resUpdateNis.Content);
+                    if (respon.status == 1)
+                    {
+                        MessageBox.Show("update siswa sukses");
+                        if (abx4.InvokeRequired)
+                        {
+                            abx4.Invoke(
+                               (Action)delegate
+                               {
+                                   abx4.Visible = false;
+                               }
+                            );
+                        }
+                        if (btnUpdate.InvokeRequired)
+                        {
+                            btnUpdate.Invoke(
+                               (Action)delegate
+                               {
+                                   btnUpdate.Enabled = true;
+                               }
+                            );
+                        } 
+                    }
+                    else if (respon.status == 0)
+                    {
+                        MessageBox.Show("update siswa gagal");
+                        if (abx4.InvokeRequired)
+                        {
+                            abx4.Invoke(
+                               (Action)delegate
+                               {
+                                   abx4.Visible = false;
+                               }
+                            );
+                        }
+                        if (btnUpdate.InvokeRequired)
+                        {
+                            btnUpdate.Invoke(
+                               (Action)delegate
+                               {
+                                   btnUpdate.Enabled = true;
+                               }
+                            );
+                        }
+                    }
+                });
+            }
+            else if (result == DialogResult.No)
+            {
+
+            }
+            else {
+
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            listTest.Clear();
+            listRespon.Clear();
+            dgvTest.Rows.Clear();
+            dgvRespon.Rows.Clear();
+            abx2.Visible = true;
+            abx3.Visible = true;
+            loadOpenTest();
         }
     }
 }
