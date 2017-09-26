@@ -39,7 +39,7 @@ namespace E_Selo_Siswa.ui
 
         private void loadData()
         {
-            var client = new RestClient("http://e-selo.id/");
+            var client = new RestClient(RootUrl.rootUrl);
             IRestRequest reqAngkatan = new RestRequest("/php/angkatan/loadAngkatan.php", Method.GET);
             //resAngkatan = client.Execute<List<AngkatanModel>>(reqAngkatan);
             client.ExecuteAsync(reqAngkatan, resAngkatan => {
@@ -128,7 +128,7 @@ namespace E_Selo_Siswa.ui
             {
                 btn_login.Enabled = false;
                 abx1.Visible = true;
-                var client = new RestClient("http://e-selo.id/");
+                var client = new RestClient(RootUrl.rootUrl);
                 IRestRequest reqLogin = new RestRequest("/php/desktopSiswa/desktopLogin.php", Method.POST);
                 reqLogin.AddJsonBody(new
                 {

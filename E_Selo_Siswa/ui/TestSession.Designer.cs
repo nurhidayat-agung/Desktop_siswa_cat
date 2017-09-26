@@ -1,4 +1,6 @@
-﻿namespace E_Selo_Siswa.ui
+﻿using System;
+
+namespace E_Selo_Siswa.ui
 {
     partial class TestSession
     {
@@ -71,6 +73,7 @@
             this.pnlPilGan.SuspendLayout();
             this.pnlRunTest.SuspendLayout();
             this.SuspendLayout();
+            
             // 
             // skinTest
             // 
@@ -525,6 +528,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TestSession";
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
+            this.Load += new System.EventHandler(this.TestSession_Load);
             this.skinTest.ResumeLayout(false);
             this.skinTest.PerformLayout();
             this.pnlSoal.ResumeLayout(false);
@@ -537,6 +541,8 @@
             this.ResumeLayout(false);
 
         }
+
+        
 
         #endregion
 

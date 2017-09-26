@@ -26,5 +26,7 @@ namespace E_Selo_Siswa.model.dashboard
         public object kesalahan_pengukuran { get; set; }
         public object cluster { get; set; }
         public int bobot { get; set; }
+
+        public int crosscek { get; set; } = 0;
     }
 }

@@ -33,6 +33,7 @@ namespace E_Selo_Siswa.ui
         private LockedAnswer[] answers;
         private bool[] isAnswer;
         private IRestResponse<ResponGeneral> resReg;
+        private IRestResponse<ResponGeneral> resDetRes;
         System.Timers.Timer t;
         double minute, sec;
 
@@ -57,6 +58,11 @@ namespace E_Selo_Siswa.ui
             loadTimerTest(testOpen);            
         }
 
+        private void TestSession_Load(object sender, EventArgs e)
+        {
+            
+        }
+
         private void loadTimerTest(TestOpen testOpen)
         {
             t = new System.Timers.Timer();
@@ -78,9 +84,9 @@ namespace E_Selo_Siswa.ui
 
         private void btn_close_Click(object sender, EventArgs e)
         {
+            t.Stop();
             SiswaDashBoard dasboard = new SiswaDashBoard(siswa,listAngkatan,listKompi,listPleton);
             dasboard.Show();
-            t.Stop();
             this.Close();
         }
 
@@ -407,18 +413,21 @@ namespace E_Selo_Siswa.ui
                 double midScore = listSoal.bobot * testOpen.scoreItem * checkEssay1(listSoal);
                 scores[noTest] = midScore;
                 saveEssayAnswer(1);
+                
             }
             else if (listSoal.jumlahEsay == 2)
             {
                 double midScore = (listSoal.bobot * testOpen.scoreItem) * checkEssay2(listSoal);
                 scores[noTest] = midScore;
                 saveEssayAnswer(2);
+                
             }
             else if (listSoal.jumlahEsay == 3)
             {
                 double midScore = (listSoal.bobot * testOpen.scoreItem) * checkEssay3(listSoal);
                 scores[noTest] = midScore;
                 saveEssayAnswer(3);
+                
             }
             
         }
@@ -468,18 +477,43 @@ namespace E_Selo_Siswa.ui
                 double midScore = testOpen.scoreItem * checkEssay1(listSoal);
                 scores[noTest] = midScore;
                 saveEssayAnswer(1);
+                if (checkEssay1(listSoal) == 1)
+                {
+                    this.listSoal[noTest].crosscek = 1;
+                }
+                else
+                {
+                    this.listSoal[noTest].crosscek = 0;
+                }
+
             }
             else if (listSoal.jumlahEsay == 2)
             {
                 double midScore =  testOpen.scoreItem * checkEssay2(listSoal);
                 scores[noTest] = midScore;
                 saveEssayAnswer(2);
+                if (checkEssay2(listSoal) == 1)
+                {
+                    this.listSoal[noTest].crosscek = 1;
+                }
+                else
+                {
+                    this.listSoal[noTest].crosscek = 0;
+                }
             }
             else if (listSoal.jumlahEsay == 3)
             {
                 double midScore =  testOpen.scoreItem * checkEssay3(listSoal);
                 scores[noTest] = midScore;
                 saveEssayAnswer(3);
+                if (checkEssay3(listSoal) == 1)
+                {
+                    this.listSoal[noTest].crosscek = 1;
+                }
+                else
+                {
+                    this.listSoal[noTest].crosscek = 0;
+                }
             }
         }
 
@@ -491,10 +525,13 @@ namespace E_Selo_Siswa.ui
             {
                 double score = testOpen.scoreItem;
                 scores[noTest] = score;
+                this.listSoal[noTest].crosscek = 1;
+                
             }
             else
             {
                 scores[noTest] = 0;
+                this.listSoal[noTest].crosscek = 0;
             }
         }
 
@@ -519,7 +556,7 @@ namespace E_Selo_Siswa.ui
 
         private void submitRespon()
         {
-            var client = new RestClient("http://e-selo.id/");
+            var client = new RestClient(RootUrl.rootUrl);
             IRestRequest reqRespon = new RestRequest("/php/desktopSiswa/pushResponDesktop.php", Method.POST);
             reqRespon.AddJsonBody(new
             {
@@ -529,24 +566,53 @@ namespace E_Selo_Siswa.ui
                 jenis = testOpen.jenisTest
             });
             resReg = client.Execute<ResponGeneral>(reqRespon);
+            Debug.WriteLine(resReg.Content);
             ResponGeneral resp = JsonConvert.DeserializeObject<ResponGeneral>(resReg.Content);
             if (resp.status == 1)
             {
-                MessageBox.Show("input respon berhasil");
-                SiswaDashBoard dasboard = new SiswaDashBoard(siswa, listAngkatan, listKompi, listPleton);
-                dasboard.Show();
-                if (this.InvokeRequired)
+                Debug.WriteLine("idRespon test : " + resp.messege);
+                long[] idSoals = new long[this.listSoal.Count];
+                int[] crosscek = new int[this.listSoal.Count];
+                for (int a = 0; a < this.listSoal.Count; a++) {
+                    idSoals[a] = this.listSoal[a].idSoal;
+                    crosscek[a] = this.listSoal[a].crosscek;
+                    /*
+                    Debug.WriteLine("butir ke-" + a + " idSoal = " + idSoals[a]);
+                    Debug.WriteLine("crosscek ke-" + a + " croscek = " + crosscek[a]);
+                    */
+                }               
+                IRestRequest reqDetRespon = new RestRequest("/php/desktopSiswa/pushDetailResponDesktop.php", Method.POST);
+                reqDetRespon.AddJsonBody(new {
+                    idResponTest = resp.messege,
+                    idSoals = idSoals,
+                    crosceks = crosscek
+                });
+                resDetRes = client.Execute<ResponGeneral>(reqDetRespon);
+                Debug.WriteLine(resDetRes.Content);
+                
+                ResponGeneral respDet = JsonConvert.DeserializeObject<ResponGeneral>(resDetRes.Content);
+                if (respDet.status == 1)
                 {
-                    this.Invoke(
-                       (Action)delegate
-                       {
-                           this.Close();
-                       }
-                    );
-                }              
+                    SiswaDashBoard dasboard = new SiswaDashBoard(siswa, listAngkatan, listKompi, listPleton);
+                    dasboard.Show();
+                    MessageBox.Show("Nilai berhasil di upload");
+                    if (this.InvokeRequired)
+                    {
+                        this.Invoke(
+                           (Action)delegate
+                           {
+                               this.Close();
+                           }
+                        );
+                    }
+                }
+                else {
+                    MessageBox.Show("input detail respon gagal");
+                }
+                         
             }
             else {
-                MessageBox.Show("input respon berhasil");
+                MessageBox.Show("input respon gagal");
             }
 
         }

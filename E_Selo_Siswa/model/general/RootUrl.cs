@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace E_Selo_Siswa.model.general
 {
-    class ResponGeneral
+    public class RootUrl
     {
-        public int status { get; set; }
-
-        public string messege { get; set; }
-
-        public Siswa data { get; set; }
+        public static String rootUrl = "http://localhost/e_selo_cat/";
     }
 }

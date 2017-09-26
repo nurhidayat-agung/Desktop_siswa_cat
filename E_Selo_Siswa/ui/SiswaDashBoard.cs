@@ -52,7 +52,7 @@ namespace E_Selo_Siswa.ui
 
         private void loadOpenTest()
         {
-            var client = new RestClient("http://e-selo.id/");
+            var client = new RestClient(RootUrl.rootUrl);
             IRestRequest reqTest = new RestRequest("/php/desktopSiswa/loadTestOpen.php", Method.POST);
             reqTest.AddJsonBody(new {
                 nis = this.siswa.nis
@@ -170,7 +170,7 @@ namespace E_Selo_Siswa.ui
 
         private void loadSoalTest(TestOpen testOpen)
         {
-            var client = new RestClient("http://e-selo.id/");
+            var client = new RestClient(RootUrl.rootUrl);
             IRestRequest reqSoal = new RestRequest("/php/desktopSiswa/loadSoalTest.php", Method.POST);
             reqSoal.AddJsonBody(new
             {
@@ -201,7 +201,7 @@ namespace E_Selo_Siswa.ui
             {
                 btnUpdate.Enabled = false;
                 abx4.Visible = true;
-                var client = new RestClient("http://e-selo.id/");
+                var client = new RestClient(RootUrl.rootUrl);
                 IRestRequest reqUpdate = new RestRequest("/php/desktopSiswa/editSiswa.php", Method.POST);
                 reqUpdate.AddJsonBody(new
                 {

@@ -82,6 +82,7 @@
     <Compile Include="model\dashboard\ResponsLoadSoal.cs" />
     <Compile Include="model\dashboard\TestOpen.cs" />
     <Compile Include="model\general\ResponGeneral.cs" />
+    <Compile Include="model\general\RootUrl.cs" />
     <Compile Include="model\general\Siswa.cs" />
     <Compile Include="model\kompi\KompiModel.cs" />
     <Compile Include="model\pleton\PletonModel.cs" />
@@ -111,6 +112,12 @@
     <Compile Include="ui\SiswaDashBoard.Designer.cs">
       <DependentUpon>SiswaDashBoard.cs</DependentUpon>
     </Compile>
+    <Compile Include="ui\TestFuzzy.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ui\TestFuzzy.Designer.cs">
+      <DependentUpon>TestFuzzy.cs</DependentUpon>
+    </Compile>
     <Compile Include="ui\TestSession.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ui\SiswaDashBoard.resx">
       <DependentUpon>SiswaDashBoard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ui\TestFuzzy.resx">
+      <DependentUpon>TestFuzzy.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ui\TestSession.resx">
       <DependentUpon>TestSession.cs</DependentUpon>

@@ -195,11 +195,12 @@
             this.abx1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.abx1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.abx1.kind = FlatUI.FlatAlertBox._Kind.Info;
-            this.abx1.Location = new System.Drawing.Point(23, 369);
+            this.abx1.Location = new System.Drawing.Point(27, 369);
             this.abx1.Name = "abx1";
             this.abx1.Size = new System.Drawing.Size(406, 42);
             this.abx1.TabIndex = 8;
             this.abx1.Text = "Mohon Tunggu";
+            this.abx1.Visible = false;
             // 
             // Login
             // 

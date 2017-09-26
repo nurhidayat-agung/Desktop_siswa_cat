@@ -77,7 +77,7 @@ namespace E_Selo_Siswa.ui
                     //...
                     btn_reg.Enabled = false;
                     abx2.Visible = true;
-                    var client = new RestClient("http://e-selo.id/");
+                    var client = new RestClient(RootUrl.rootUrl);
                     IRestRequest reqReg = new RestRequest("/php/desktopSiswa/pushSiswa.php", Method.POST);
                     reqReg.AddJsonBody(new
                     {
@@ -133,7 +133,7 @@ namespace E_Selo_Siswa.ui
             btnCek.Enabled = false;
             if (tbxNis.Text != "")
             {
-                var client = new RestClient("http://e-selo.id/");
+                var client = new RestClient(RootUrl.rootUrl);
                 IRestRequest reqNis = new RestRequest("/php/desktopSiswa/cekNis.php", Method.POST);
                 reqNis.AddJsonBody(new
                 {
