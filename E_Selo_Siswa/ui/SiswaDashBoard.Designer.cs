@@ -42,6 +42,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.formSkin1 = new FlatUI.FormSkin();
+            this.btnLogOut = new FlatUI.FlatButton();
             this.abx4 = new FlatUI.FlatAlertBox();
             this.btnRefresh = new FlatUI.FlatButton();
             this.abx3 = new FlatUI.FlatAlertBox();
@@ -85,6 +86,7 @@
             this.formSkin1.BackColor = System.Drawing.Color.White;
             this.formSkin1.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
             this.formSkin1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(58)))), ((int)(((byte)(60)))));
+            this.formSkin1.Controls.Add(this.btnLogOut);
             this.formSkin1.Controls.Add(this.abx4);
             this.formSkin1.Controls.Add(this.btnRefresh);
             this.formSkin1.Controls.Add(this.abx3);
@@ -118,6 +120,21 @@
             this.formSkin1.Size = new System.Drawing.Size(1127, 657);
             this.formSkin1.TabIndex = 0;
             this.formSkin1.Text = "Siswa Dasboard";
+            // 
+            // btnLogOut
+            // 
+            this.btnLogOut.BackColor = System.Drawing.Color.Transparent;
+            this.btnLogOut.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
+            this.btnLogOut.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLogOut.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnLogOut.Location = new System.Drawing.Point(959, 12);
+            this.btnLogOut.Name = "btnLogOut";
+            this.btnLogOut.Rounded = false;
+            this.btnLogOut.Size = new System.Drawing.Size(108, 22);
+            this.btnLogOut.TabIndex = 41;
+            this.btnLogOut.Text = "Log Out";
+            this.btnLogOut.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.btnLogOut.Click += new System.EventHandler(this.btnLogOut_Click);
             // 
             // abx4
             // 
@@ -607,5 +624,6 @@
         private FlatUI.FlatAlertBox abx3;
         private FlatUI.FlatButton btnRefresh;
         private FlatUI.FlatAlertBox abx4;
+        private FlatUI.FlatButton btnLogOut;
     }
 }

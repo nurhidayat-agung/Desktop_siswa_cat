@@ -105,6 +105,7 @@ namespace E_Selo_Siswa.ui
             else {
                 btnNext.Enabled = false;
             }
+             
         }
 
         private void startTimer()
@@ -240,6 +241,7 @@ namespace E_Selo_Siswa.ui
 
         private void btnNext_Click(object sender, EventArgs e)
         {
+            cekJawab();
             abx1.Visible = false;
             resetFiled();
             noTest++;
@@ -340,6 +342,7 @@ namespace E_Selo_Siswa.ui
 
         private void btnBack_Click(object sender, EventArgs e)
         {
+            cekJawab();
             abx1.Visible = false;
             resetFiled();
             noTest--;
@@ -398,6 +401,32 @@ namespace E_Selo_Siswa.ui
             }
             abx1.Visible = true;
             Debug.WriteLine("hasil koreksi : " + scores[noTest]);          
+        }
+
+        public void cekJawab()
+        {
+            if (testOpen.jenisTest.ToLower().Trim().Equals("klasik"))
+            {
+                if (listSoal[noTest].jenisSoal.ToLower().Equals("pilihan ganda"))
+                {
+                    checkPilGanKlasik(listSoal[noTest]);
+                }
+                else if (listSoal[noTest].jenisSoal.ToLower().Equals("melengkapi"))
+                {
+                    checkEssayKlassik(listSoal[noTest]);
+                }
+            }
+            else if (testOpen.jenisTest.ToLower().Trim().Equals("adaptif"))
+            {
+                if (listSoal[noTest].jenisSoal.ToLower().Equals("pilihan ganda"))
+                {
+                    checkPilGanAdaptif(listSoal[noTest]);
+                }
+                else if (listSoal[noTest].jenisSoal.ToLower().Equals("melengkapi"))
+                {
+                    checkEssayAdaptif(listSoal[noTest]);
+                }
+            }
         }
 
         public static string RemoveWhitespace(string str)
@@ -537,6 +566,7 @@ namespace E_Selo_Siswa.ui
 
         private void btnFinish_Click(object sender, EventArgs e)
         {
+            cekJawab();
             Debug.WriteLine("score total : " + scores.Sum());
             DialogResult result = MessageBox.Show("Submit Hasil Test ?", "Confirmation", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes) {
@@ -556,6 +586,7 @@ namespace E_Selo_Siswa.ui
 
         private void submitRespon()
         {
+            t.Stop();
             var client = new RestClient(RootUrl.rootUrl);
             IRestRequest reqRespon = new RestRequest("/php/desktopSiswa/pushResponDesktop.php", Method.POST);
             reqRespon.AddJsonBody(new
@@ -576,10 +607,7 @@ namespace E_Selo_Siswa.ui
                 for (int a = 0; a < this.listSoal.Count; a++) {
                     idSoals[a] = this.listSoal[a].idSoal;
                     crosscek[a] = this.listSoal[a].crosscek;
-                    /*
-                    Debug.WriteLine("butir ke-" + a + " idSoal = " + idSoals[a]);
-                    Debug.WriteLine("crosscek ke-" + a + " croscek = " + crosscek[a]);
-                    */
+                    
                 }               
                 IRestRequest reqDetRespon = new RestRequest("/php/desktopSiswa/pushDetailResponDesktop.php", Method.POST);
                 reqDetRespon.AddJsonBody(new {
@@ -595,7 +623,7 @@ namespace E_Selo_Siswa.ui
                 {
                     SiswaDashBoard dasboard = new SiswaDashBoard(siswa, listAngkatan, listKompi, listPleton);
                     dasboard.Show();
-                    MessageBox.Show("Nilai berhasil di upload");
+                    MessageBox.Show("nilai berhasil di upload");
                     if (this.InvokeRequired)
                     {
                         this.Invoke(
@@ -605,11 +633,15 @@ namespace E_Selo_Siswa.ui
                            }
                         );
                     }
+                    else {
+                        this.Close();
+                    }
+                    
                 }
                 else {
                     MessageBox.Show("input detail respon gagal");
                 }
-                         
+
             }
             else {
                 MessageBox.Show("input respon gagal");

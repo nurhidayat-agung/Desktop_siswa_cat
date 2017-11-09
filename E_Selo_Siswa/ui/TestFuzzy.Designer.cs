@@ -60,7 +60,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.rtbEssay1 = new System.Windows.Forms.RichTextBox();
             this.btnCheck = new FlatUI.FlatButton();
-            this.btnBack = new FlatUI.FlatButton();
             this.btnNext = new FlatUI.FlatButton();
             this.pnlPilGan = new System.Windows.Forms.Panel();
             this.rbB = new System.Windows.Forms.RadioButton();
@@ -117,6 +116,7 @@
             this.btnFinish.TabIndex = 19;
             this.btnFinish.Text = "Selesai";
             this.btnFinish.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.btnFinish.Click += new System.EventHandler(this.btnFinish_Click);
             // 
             // btnMulaiTest
             // 
@@ -131,6 +131,7 @@
             this.btnMulaiTest.TabIndex = 14;
             this.btnMulaiTest.Text = "Mulai Test";
             this.btnMulaiTest.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.btnMulaiTest.Click += new System.EventHandler(this.btnMulaiTest_Click);
             // 
             // lblSec
             // 
@@ -268,6 +269,7 @@
             this.btn_close.TabIndex = 0;
             this.btn_close.Text = "Tutup";
             this.btn_close.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
             // rbC
             // 
@@ -306,7 +308,7 @@
             this.skinTest.HeaderMaximize = false;
             this.skinTest.Location = new System.Drawing.Point(0, 0);
             this.skinTest.Name = "skinTest";
-            this.skinTest.Size = new System.Drawing.Size(1007, 626);
+            this.skinTest.Size = new System.Drawing.Size(1026, 667);
             this.skinTest.TabIndex = 1;
             this.skinTest.Text = "Test Session";
             // 
@@ -325,7 +327,6 @@
             this.pnlRunTest.Controls.Add(this.abx1);
             this.pnlRunTest.Controls.Add(this.pnlEssay);
             this.pnlRunTest.Controls.Add(this.btnCheck);
-            this.pnlRunTest.Controls.Add(this.btnBack);
             this.pnlRunTest.Controls.Add(this.btnNext);
             this.pnlRunTest.Controls.Add(this.pnlPilGan);
             this.pnlRunTest.Controls.Add(this.rtbIsiSoal);
@@ -443,20 +444,7 @@
             this.btnCheck.TabIndex = 20;
             this.btnCheck.Text = "Kunci Jawaban";
             this.btnCheck.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            // 
-            // btnBack
-            // 
-            this.btnBack.BackColor = System.Drawing.Color.Transparent;
-            this.btnBack.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
-            this.btnBack.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBack.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btnBack.Location = new System.Drawing.Point(675, 410);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Rounded = false;
-            this.btnBack.Size = new System.Drawing.Size(106, 32);
-            this.btnBack.TabIndex = 18;
-            this.btnBack.Text = "Sebelumnya";
-            this.btnBack.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.btnCheck.Visible = false;
             // 
             // btnNext
             // 
@@ -471,6 +459,7 @@
             this.btnNext.TabIndex = 17;
             this.btnNext.Text = "Selanjutnya";
             this.btnNext.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // pnlPilGan
             // 
@@ -512,7 +501,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1007, 626);
+            this.ClientSize = new System.Drawing.Size(1026, 667);
             this.Controls.Add(this.skinTest);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TestFuzzy";
@@ -567,7 +556,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RichTextBox rtbEssay1;
         private FlatUI.FlatButton btnCheck;
-        private FlatUI.FlatButton btnBack;
         private FlatUI.FlatButton btnNext;
         private System.Windows.Forms.Panel pnlPilGan;
         private System.Windows.Forms.RadioButton rbB;

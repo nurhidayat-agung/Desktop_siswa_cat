@@ -58,10 +58,10 @@ namespace E_Selo_Siswa.ui
                 nis = this.siswa.nis
             });
             client.ExecuteAsync(reqTest, resTest => {
-                listTest = JsonConvert.DeserializeObject<List<TestOpen>>(resTest.Content);
                 Debug.WriteLine("result Test : " + listTest.Count);
-                if (listTest.Count > 0)
+                if (JsonConvert.DeserializeObject<List<TestOpen>>(resTest.Content).Count > 0)
                 {
+                    listTest = JsonConvert.DeserializeObject<List<TestOpen>>(resTest.Content);
                     if (dgvTest.InvokeRequired)
                     {
                         dgvTest.Invoke(
@@ -94,22 +94,26 @@ namespace E_Selo_Siswa.ui
                 nis = siswa.nis
             });
             client.ExecuteAsync(reqRespon, resRespon => {
-                listRespon = JsonConvert.DeserializeObject<List<ResponTest>>(resRespon.Content);
-                Debug.WriteLine("result respon : " + listTest.Count);
-                if (listRespon.Count > 0)
-                {
-                    if (dgvRespon.InvokeRequired)
+                Debug.WriteLine("result : "+resRespon.Content);
+                if (JsonConvert.DeserializeObject<List<ResponTest>>(resRespon.Content).Count > 0) {
+                    listRespon = JsonConvert.DeserializeObject<List<ResponTest>>(resRespon.Content);
+                    Debug.WriteLine("result respon : " + listTest.Count);
+                    if (listRespon.Count > 0)
                     {
-                        dgvRespon.Invoke(
-                           (Action)delegate
-                           {
-                               foreach (ResponTest respon in listRespon)
+                        if (dgvRespon.InvokeRequired)
+                        {
+                            dgvRespon.Invoke(
+                               (Action)delegate
                                {
-                                   dgvRespon.Rows.Add(respon.idResponTest, respon.namaTest, respon.jenisTest, respon.nilaiResponTest);
+                                   foreach (ResponTest respon in listRespon)
+                                   {
+                                       dgvRespon.Rows.Add(respon.idResponTest, respon.namaTest, respon.jenisTest, respon.nilaiResponTest);
+                                   }
                                }
-                           }
-                        );
+                            );
+                        }
                     }
+                    
                 }
                 else {
                     MessageBox.Show("Tidak ditemukan respon dalam data base");
@@ -117,10 +121,10 @@ namespace E_Selo_Siswa.ui
                 if (abx3.InvokeRequired)
                 {
                     abx3.Invoke(
-                       (Action)delegate
-                       {
-                           abx3.Visible = false;
-                       }
+                        (Action)delegate
+                        {
+                            abx3.Visible = false;
+                        }
                     );
                 }
             });
@@ -164,7 +168,17 @@ namespace E_Selo_Siswa.ui
             if (e.ColumnIndex == 4) {
                 dgvTest.Enabled = false;
                 abx1.Visible = true;
-                loadSoalTest(listTest[e.RowIndex]);
+                if (listTest[e.RowIndex].jenisTest.Trim().ToLower().Equals("adaptif"))
+                {
+                    TestFuzzy fuzzy = new TestFuzzy(listTest[e.RowIndex], siswa, listAngkatan, listKompi, listPleton);
+                    fuzzy.Show();
+                    this.Close();
+                }
+                else
+                {
+                    loadSoalTest(listTest[e.RowIndex]);
+                }
+                
             }
         }
 
@@ -278,6 +292,13 @@ namespace E_Selo_Siswa.ui
             abx2.Visible = true;
             abx3.Visible = true;
             loadOpenTest();
+        }
+
+        private void btnLogOut_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Close();
         }
     }
 }

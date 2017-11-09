@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -81,11 +81,14 @@
     <Compile Include="model\dashboard\ResponTest.cs" />
     <Compile Include="model\dashboard\ResponsLoadSoal.cs" />
     <Compile Include="model\dashboard\TestOpen.cs" />
+    <Compile Include="model\fuzztest\NextSoalResponse.cs" />
+    <Compile Include="model\fuzztest\SoalModel.cs" />
     <Compile Include="model\general\ResponGeneral.cs" />
     <Compile Include="model\general\RootUrl.cs" />
     <Compile Include="model\general\Siswa.cs" />
     <Compile Include="model\kompi\KompiModel.cs" />
     <Compile Include="model\pleton\PletonModel.cs" />
+    <Compile Include="model\serverRespon\FuzzyGetFirst.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ui\Login.cs">
@@ -189,6 +192,7 @@
   <ItemGroup>
     <Content Include="favicon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

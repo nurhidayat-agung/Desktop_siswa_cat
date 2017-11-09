@@ -22,6 +22,9 @@ namespace E_Selo_Siswa.ui
             base.Dispose(disposing);
         }
 
+
+
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -32,8 +35,10 @@ namespace E_Selo_Siswa.ui
         {
             this.skinTest = new FlatUI.FormSkin();
             this.pnlSoal = new System.Windows.Forms.Panel();
+            this.pnlRunTest = new System.Windows.Forms.Panel();
             this.abx1 = new FlatUI.FlatAlertBox();
             this.pnlEssay = new System.Windows.Forms.Panel();
+            this.abx2 = new FlatUI.FlatAlertBox();
             this.label7 = new System.Windows.Forms.Label();
             this.rtbEssay3 = new System.Windows.Forms.RichTextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -41,7 +46,6 @@ namespace E_Selo_Siswa.ui
             this.label1 = new System.Windows.Forms.Label();
             this.rtbEssay1 = new System.Windows.Forms.RichTextBox();
             this.btnCheck = new FlatUI.FlatButton();
-            this.btnFinish = new FlatUI.FlatStickyButton();
             this.btnBack = new FlatUI.FlatButton();
             this.btnNext = new FlatUI.FlatButton();
             this.pnlPilGan = new System.Windows.Forms.Panel();
@@ -52,6 +56,7 @@ namespace E_Selo_Siswa.ui
             this.rbA = new System.Windows.Forms.RadioButton();
             this.rtbIsiSoal = new System.Windows.Forms.RichTextBox();
             this.lblNoSoal = new System.Windows.Forms.Label();
+            this.btnFinish = new FlatUI.FlatStickyButton();
             this.btnMulaiTest = new FlatUI.FlatStickyButton();
             this.lblSec = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -65,15 +70,12 @@ namespace E_Selo_Siswa.ui
             this.lblNamaTest = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_close = new FlatUI.FlatButton();
-            this.pnlRunTest = new System.Windows.Forms.Panel();
-            this.abx2 = new FlatUI.FlatAlertBox();
             this.skinTest.SuspendLayout();
             this.pnlSoal.SuspendLayout();
+            this.pnlRunTest.SuspendLayout();
             this.pnlEssay.SuspendLayout();
             this.pnlPilGan.SuspendLayout();
-            this.pnlRunTest.SuspendLayout();
             this.SuspendLayout();
-            
             // 
             // skinTest
             // 
@@ -115,6 +117,21 @@ namespace E_Selo_Siswa.ui
             this.pnlSoal.TabIndex = 21;
             this.pnlSoal.Visible = false;
             // 
+            // pnlRunTest
+            // 
+            this.pnlRunTest.Controls.Add(this.abx1);
+            this.pnlRunTest.Controls.Add(this.pnlEssay);
+            this.pnlRunTest.Controls.Add(this.btnCheck);
+            this.pnlRunTest.Controls.Add(this.btnBack);
+            this.pnlRunTest.Controls.Add(this.btnNext);
+            this.pnlRunTest.Controls.Add(this.pnlPilGan);
+            this.pnlRunTest.Controls.Add(this.rtbIsiSoal);
+            this.pnlRunTest.Controls.Add(this.lblNoSoal);
+            this.pnlRunTest.Location = new System.Drawing.Point(14, 21);
+            this.pnlRunTest.Name = "pnlRunTest";
+            this.pnlRunTest.Size = new System.Drawing.Size(926, 451);
+            this.pnlRunTest.TabIndex = 24;
+            // 
             // abx1
             // 
             this.abx1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
@@ -142,6 +159,19 @@ namespace E_Selo_Siswa.ui
             this.pnlEssay.Name = "pnlEssay";
             this.pnlEssay.Size = new System.Drawing.Size(818, 275);
             this.pnlEssay.TabIndex = 22;
+            // 
+            // abx2
+            // 
+            this.abx2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
+            this.abx2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.abx2.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.abx2.kind = FlatUI.FlatAlertBox._Kind.Info;
+            this.abx2.Location = new System.Drawing.Point(113, 96);
+            this.abx2.Name = "abx2";
+            this.abx2.Size = new System.Drawing.Size(576, 42);
+            this.abx2.TabIndex = 15;
+            this.abx2.Text = "silahkan tekan tombol \"selesai\" untuk submit";
+            this.abx2.Visible = false;
             // 
             // label7
             // 
@@ -210,22 +240,8 @@ namespace E_Selo_Siswa.ui
             this.btnCheck.TabIndex = 20;
             this.btnCheck.Text = "Kunci Jawaban";
             this.btnCheck.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.btnCheck.Visible = false;
             this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
-            // 
-            // btnFinish
-            // 
-            this.btnFinish.BackColor = System.Drawing.Color.Transparent;
-            this.btnFinish.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
-            this.btnFinish.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnFinish.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btnFinish.Location = new System.Drawing.Point(23, 478);
-            this.btnFinish.Name = "btnFinish";
-            this.btnFinish.Rounded = false;
-            this.btnFinish.Size = new System.Drawing.Size(187, 42);
-            this.btnFinish.TabIndex = 19;
-            this.btnFinish.Text = "Selesai";
-            this.btnFinish.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
-            this.btnFinish.Click += new System.EventHandler(this.btnFinish_Click);
             // 
             // btnBack
             // 
@@ -346,6 +362,21 @@ namespace E_Selo_Siswa.ui
             this.lblNoSoal.Size = new System.Drawing.Size(19, 21);
             this.lblNoSoal.TabIndex = 1;
             this.lblNoSoal.Text = "1";
+            // 
+            // btnFinish
+            // 
+            this.btnFinish.BackColor = System.Drawing.Color.Transparent;
+            this.btnFinish.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
+            this.btnFinish.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnFinish.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.btnFinish.Location = new System.Drawing.Point(23, 478);
+            this.btnFinish.Name = "btnFinish";
+            this.btnFinish.Rounded = false;
+            this.btnFinish.Size = new System.Drawing.Size(187, 42);
+            this.btnFinish.TabIndex = 19;
+            this.btnFinish.Text = "Selesai";
+            this.btnFinish.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
+            this.btnFinish.Click += new System.EventHandler(this.btnFinish_Click);
             // 
             // btnMulaiTest
             // 
@@ -489,34 +520,6 @@ namespace E_Selo_Siswa.ui
             this.btn_close.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(243)))), ((int)(((byte)(243)))));
             this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
-            // pnlRunTest
-            // 
-            this.pnlRunTest.Controls.Add(this.abx1);
-            this.pnlRunTest.Controls.Add(this.pnlEssay);
-            this.pnlRunTest.Controls.Add(this.btnCheck);
-            this.pnlRunTest.Controls.Add(this.btnBack);
-            this.pnlRunTest.Controls.Add(this.btnNext);
-            this.pnlRunTest.Controls.Add(this.pnlPilGan);
-            this.pnlRunTest.Controls.Add(this.rtbIsiSoal);
-            this.pnlRunTest.Controls.Add(this.lblNoSoal);
-            this.pnlRunTest.Location = new System.Drawing.Point(14, 21);
-            this.pnlRunTest.Name = "pnlRunTest";
-            this.pnlRunTest.Size = new System.Drawing.Size(926, 451);
-            this.pnlRunTest.TabIndex = 24;
-            // 
-            // abx2
-            // 
-            this.abx2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(70)))), ((int)(((byte)(73)))));
-            this.abx2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.abx2.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.abx2.kind = FlatUI.FlatAlertBox._Kind.Info;
-            this.abx2.Location = new System.Drawing.Point(113, 96);
-            this.abx2.Name = "abx2";
-            this.abx2.Size = new System.Drawing.Size(576, 42);
-            this.abx2.TabIndex = 15;
-            this.abx2.Text = "silahkan tekan tombol \"selesai\" untuk submit";
-            this.abx2.Visible = false;
-            // 
             // TestSession
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -532,12 +535,12 @@ namespace E_Selo_Siswa.ui
             this.skinTest.ResumeLayout(false);
             this.skinTest.PerformLayout();
             this.pnlSoal.ResumeLayout(false);
+            this.pnlRunTest.ResumeLayout(false);
+            this.pnlRunTest.PerformLayout();
             this.pnlEssay.ResumeLayout(false);
             this.pnlEssay.PerformLayout();
             this.pnlPilGan.ResumeLayout(false);
             this.pnlPilGan.PerformLayout();
-            this.pnlRunTest.ResumeLayout(false);
-            this.pnlRunTest.PerformLayout();
             this.ResumeLayout(false);
 
         }

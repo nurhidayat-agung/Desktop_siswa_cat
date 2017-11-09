@@ -187,7 +187,6 @@
             this.btn_reg.BackColor = System.Drawing.Color.Transparent;
             this.btn_reg.BaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(168)))), ((int)(((byte)(109)))));
             this.btn_reg.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_reg.Enabled = false;
             this.btn_reg.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.btn_reg.Location = new System.Drawing.Point(456, 487);
             this.btn_reg.Name = "btn_reg";
